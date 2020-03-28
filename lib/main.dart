@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -42,25 +43,23 @@ class _MyAppState extends State<MyApp> {
           button: TextStyle(color: Colors.white),
         ),
       ),
-      home: OnBoardingScreen()
-      // FutureBuilder(
-      //   future: _checkIsFirstSeen,
-      //   builder: (context, snapshot) {
-      //     if (snapshot.hasData) {
-      //       if (snapshot.data)
-      //         return HomeScreen();
-      //       else
-      //         return OnBoardingScreen();
-      //     } else {
-      //       return Scaffold(
-      //         body: Center(
-      //           child: CircularProgressIndicator(),
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
-      ,
+      home: FutureBuilder(
+        future: _checkIsFirstSeen,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data)
+              return HomeScreen();
+            else
+              return OnBoardingScreen();
+          } else {
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
       routes: {
         'home': (context) => HomeScreen(),
       },
