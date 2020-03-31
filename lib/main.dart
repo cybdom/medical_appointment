@@ -16,8 +16,8 @@ class _MyAppState extends State<MyApp> {
   var _checkIsFirstSeen;
   @override
   void initState() {
-    _checkIsFirstSeen = checkIsFirstSeen();
     super.initState();
+    _checkIsFirstSeen = checkIsFirstSeen();
   }
 
   Future<bool> checkIsFirstSeen() async {
