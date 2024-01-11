@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medical_appointment/ui/screens/details.dart';
 import 'package:medical_appointment/ui/screens/home.dart';
 import 'package:medical_appointment/ui/screens/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _checkIsFirstSeen;
+  late Future<bool> _checkIsFirstSeen;
   @override
   void initState() {
     super.initState();
@@ -36,18 +35,18 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        backgroundColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
-        textTheme: GoogleFonts.openSansTextTheme().copyWith(
-          button: TextStyle(color: Colors.white),
+        textTheme: GoogleFonts.openSansTextTheme()?.copyWith(
+          labelLarge: TextStyle(color: Colors.white),
         ),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+            ?.copyWith(background: Colors.white),
       ),
       home: FutureBuilder(
         future: _checkIsFirstSeen,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data)
+            if (snapshot.data != null && snapshot.data!)
               return HomeScreen();
             else
               return OnBoardingScreen();

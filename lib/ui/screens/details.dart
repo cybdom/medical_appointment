@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:medical_appointment/global.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class DetailsScreen extends StatefulWidget {
   final int id;
 
-  const DetailsScreen({Key key, @required this.id}) : super(key: key);
+  const DetailsScreen({Key? key, required this.id}) : super(key: key);
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
 }
@@ -80,7 +80,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 children: <Widget>[
                                   Text(
                                     "${doctorInfo[widget.id].name}",
-                                    style: Theme.of(context).textTheme.subtitle,
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
                                   ),
                                   Text(
                                     "${doctorInfo[widget.id].type}",
@@ -127,14 +128,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             ),
                             Text("(${doctorInfo[0].reviewCount} Reviews)"),
                             Expanded(
-                              child: FlatButton(
+                              child: TextButton(
                                 child: FittedBox(
                                   child: Text(
                                     "See all reviews",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .button
-                                        .copyWith(color: MyColors.blue),
+                                        .labelLarge
+                                        ?.copyWith(color: MyColors.blue),
                                   ),
                                 ),
                                 onPressed: () {},
@@ -144,7 +145,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         Text(
                           "About",
-                          style: Theme.of(context).textTheme.subtitle,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                         Wrap(
                           children: <Widget>[
@@ -152,13 +153,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               "${doctorInfo[widget.id].about}",
                               maxLines: _showMoreAbout ? null : 1,
                             ),
-                            FlatButton(
+                            TextButton(
                               child: Text(
                                 _showMoreAbout ? "See Less" : "See More",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .button
-                                    .copyWith(color: MyColors.blue),
+                                    .labelLarge
+                                    ?.copyWith(color: MyColors.blue),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -170,7 +171,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         Text(
                           "Working Hours",
-                          style: Theme.of(context).textTheme.subtitle,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                         Row(
                           children: <Widget>[
@@ -184,8 +185,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   "Open",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .button
-                                      .copyWith(color: MyColors.darkGreen),
+                                      .labelLarge
+                                      ?.copyWith(color: MyColors.darkGreen),
                                 ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5.0),
@@ -198,7 +199,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         SizedBox(height: 15),
                         Text(
                           "Stats",
-                          style: Theme.of(context).textTheme.subtitle,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                         SizedBox(height: 11),
                         Row(
@@ -207,7 +208,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             Column(
                               children: <Widget>[
                                 Text("${doctorInfo[widget.id].patientsCount}",
-                                    style: Theme.of(context).textTheme.title),
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge),
                                 Text(
                                   "Patients",
                                   style: TextStyle(color: Colors.grey),
@@ -218,7 +220,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               children: <Widget>[
                                 Text(
                                     "${doctorInfo[widget.id].experience} Years",
-                                    style: Theme.of(context).textTheme.title),
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge),
                                 Text(
                                   "Experience",
                                   style: TextStyle(color: Colors.grey),
@@ -228,7 +231,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             Column(
                               children: <Widget>[
                                 Text("${doctorInfo[widget.id].certifications}",
-                                    style: Theme.of(context).textTheme.title),
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge),
                                 Text(
                                   "Certifications",
                                   style: TextStyle(color: Colors.grey),
@@ -240,14 +244,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         SizedBox(height: 15),
                         SizedBox(
                           width: double.infinity,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              backgroundColor: MyColors.blue,
                             ),
-                            color: MyColors.blue,
                             child: Text(
                               "Make An Appointement",
-                              style: Theme.of(context).textTheme.button,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                             onPressed: () {},
                           ),

@@ -14,7 +14,7 @@ class OnBoardingScreen extends StatelessWidget {
             children: <Widget>[
               Align(
                 alignment: Alignment.centerRight,
-                child: FlatButton(
+                child: TextButton(
                   child: Text("Skip"),
                   onPressed: () =>
                       Navigator.pushReplacementNamed(context, 'home'),
@@ -52,7 +52,7 @@ class OnBoardingScreen extends StatelessWidget {
                       SizedBox(height: 11.0),
                       Text(
                         "${onBoardingInstructions[i].title}",
-                        style: Theme.of(context).textTheme.title,
+                        style: Theme.of(context).textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 5.0),
@@ -60,8 +60,8 @@ class OnBoardingScreen extends StatelessWidget {
                         "${onBoardingInstructions[i].subtitle}",
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle
-                            .copyWith(color: Colors.grey),
+                            .titleSmall
+                            ?.copyWith(color: Colors.grey),
                         textAlign: TextAlign.center,
                       )
                     ],
@@ -70,17 +70,19 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    backgroundColor: MyColors.blue,
                   ),
-                  color: MyColors.blue,
                   child: Text(
                     "Next",
-                    style: Theme.of(context).textTheme.button,
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                   onPressed: () {
-                    if (onBoardingInstructions.length -1  ==
+                    if (onBoardingInstructions.length - 1 ==
                         _pageController.page) {
                       Navigator.pushReplacementNamed(context, 'home');
                     } else

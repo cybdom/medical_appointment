@@ -36,15 +36,15 @@ class HomeScreen extends StatelessWidget {
                               "Hello,",
                               style: Theme.of(context)
                                   .textTheme
-                                  .display1
-                                  .copyWith(color: Colors.grey),
+                                  .headlineMedium
+                                  ?.copyWith(color: Colors.grey),
                             ),
                             Text(
                               "Cybdom",
                               style: Theme.of(context)
                                   .textTheme
-                                  .display1
-                                  .copyWith(
+                                  .headlineMedium
+                                  ?.copyWith(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
                             ),
@@ -106,14 +106,19 @@ class HomeScreen extends StatelessWidget {
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
-                                  RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                      ),
+                                      backgroundColor: MyColors.blue,
                                     ),
-                                    color: MyColors.blue,
                                     child: Text(
                                       "Contact A Doctor",
-                                      style: Theme.of(context).textTheme.button,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge,
                                     ),
                                     onPressed: () => Navigator.push(
                                       context,
@@ -132,7 +137,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 9),
-                  Text("Categories", style: Theme.of(context).textTheme.title),
+                  Text("Categories",
+                      style: Theme.of(context).textTheme.titleLarge),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 9.0),
                     height: 71,
@@ -188,9 +194,9 @@ class HomeScreen extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         "Top Doctors",
-                        style: Theme.of(context).textTheme.title,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text("See All"),
                         onPressed: () {},
                       )

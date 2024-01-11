@@ -27,18 +27,17 @@ class DoctorInfo {
       certifications;
   final double reviews;
 
-  DoctorInfo({
-    this.name,
-    this.image,
-    this.type,
-    this.reviews,
-    this.reviewCount,
-    this.about,
-    this.workingHours,
-    this.patientsCount,
-    this.experience,
-    this.certifications,
-  });
+  DoctorInfo(
+      {required this.name,
+      required this.image,
+      required this.type,
+      required this.reviewCount,
+      required this.about,
+      required this.workingHours,
+      required this.patientsCount,
+      required this.experience,
+      required this.certifications,
+      required this.reviews});
 }
 
 List<DoctorInfo> doctorInfo = [

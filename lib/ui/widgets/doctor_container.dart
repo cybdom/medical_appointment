@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:medical_appointment/global.dart';
 import 'package:medical_appointment/ui/screens/details.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class DoctorContainer extends StatelessWidget {
   final int id;
 
-  const DoctorContainer({Key key, this.id}) : super(key: key);
+  const DoctorContainer({Key? key, required this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -39,7 +39,7 @@ class DoctorContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text("${doctorInfo[id].name}",
-                      style: Theme.of(context).textTheme.subtitle),
+                      style: Theme.of(context).textTheme.titleSmall),
                   Text(
                     "${doctorInfo[id].type}",
                     style: TextStyle(color: Colors.grey),
@@ -83,8 +83,8 @@ class DoctorContainer extends StatelessWidget {
                       "Open",
                       style: Theme.of(context)
                           .textTheme
-                          .button
-                          .copyWith(color: MyColors.darkGreen),
+                          .labelLarge
+                          ?.copyWith(color: MyColors.darkGreen),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
